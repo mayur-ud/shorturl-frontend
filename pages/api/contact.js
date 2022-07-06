@@ -38,8 +38,8 @@ let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
 sendSmtpEmail.subject = "URL Shortener feedback";
 sendSmtpEmail.htmlContent = `<html><body><h1>${req.body.feedback}</h1></body></html>`;
-sendSmtpEmail.sender = {"name":"URL shortner","email":EMAIL_SERVER_USER};
-sendSmtpEmail.to = [{"email":EMAIL_SERVER_USER,"name":"Mayur"}];
+sendSmtpEmail.sender = {"name":"URL shortner","email":process.env.EMAIL_SERVER_USER};
+sendSmtpEmail.to = [{"email":process.env.EMAIL_SERVER_USER,"name":"Mayur"}];
 
 apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
