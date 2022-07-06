@@ -12,7 +12,7 @@ function Unauthuser() {
     <Container>
     <Container px='auto' color='dimmed'>
       <Text size='xl' weight={700}>Tired of sharing long bulky URL that makes your content unattractive ?</Text>
-      <Text size='md' mx={25}>Here's the solution , Get any URL shortened instantly and its easily shareable</Text>
+      <Text size='md' mx={25}>Here`&apos;`s the solution , Get any URL shortened instantly and its easily shareable</Text>
     </Container>
     <Service/>
     <Text size='lg' weight={700}>Please Login , to try our URL shortener...</Text>

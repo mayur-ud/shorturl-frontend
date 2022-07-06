@@ -10,7 +10,7 @@ const Feature = (props) => {
     <div style={{ maxWidth: 250 , margin: 'auto' }}>
           <Card shadow="lg" height={300} >
             <Card.Section p='md'>
-              <Image src={props.item.img} height={horizontal ? 180 : 120} width={horizontal ? 180 : 100}  radius='md' px='auto'/>
+              <Image src={props.item.img} alt={props.item.label} height={horizontal ? 180 : 120} width={horizontal ? 180 : 100}  radius='md' px='auto'/>
             </Card.Section>
           <Container>
             <Text size="lg">
@@ -43,7 +43,7 @@ function Service() {
   } ,
 ]
 
-    const features = data.map((item)=> <Grid.Col lg={3} md={6} xs={6}> <Feature item = {item}/> </Grid.Col> )
+    const features = data.map((item)=> <Grid.Col key={item.label} lg={3} md={6} xs={6}> <Feature item = {item} key={item.label}/> </Grid.Col> )
     return (
       <Grid gutter='md' my='md' mx='auto'> 
       {features}
