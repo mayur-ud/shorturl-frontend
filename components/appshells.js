@@ -8,14 +8,13 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
-  Button,
   useMantineColorScheme,
   ActionIcon,
   Affix,
   Grid,
   Box
 } from '@mantine/core';
-import {useSession , signIn , signOut} from 'next-auth/react'
+import {useSession } from 'next-auth/react'
 import {FaMoon , FaSun , FaLink , FaCopyright , FaGithub, FaLinkedin} from 'react-icons/fa'
 import {MyNavbar } from './navbar';
 import { useRouter } from 'next/router';
