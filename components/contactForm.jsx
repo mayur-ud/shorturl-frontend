@@ -34,8 +34,10 @@ function ContactForm() {
        name : name,
        feedback : feedback
       } ).then((res)=>{
-        console.log(res);
+        
         res.status === 200 ? setShow(1) : setShow(2);
+        nameRef.current.value = ''
+        feedbackRef.current.value = ''
         setTimeout(() => {
           setShow(0)
          }, 3000);

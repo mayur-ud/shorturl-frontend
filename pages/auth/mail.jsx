@@ -1,20 +1,29 @@
-import React from 'react'
-import { TextInput, Button, Box } from '@mantine/core';
+import React, { useState } from 'react'
+import { TextInput, Button, Box , Affix ,Alert } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import {signIn} from 'next-auth/react'
-import {useRouter} from 'next/router';
+import {useRouter , useRef} from 'next/router';
+import {FaCheck} from 'react-icons/fa'
 
 function Mail() {
   const router = useRouter();
-    const handelMail = (email) =>{
-        try {
+  const mailRef = useRef();
+  const [show , setShow] = useState(false);
+    const handelMail = () =>{
+      const email = mailRef.current.value;  
+      try {
           signIn('email' , {
             email,
             redirect : false
-        })
+        }.then(()=> setShow(1)))
         } catch (error) {
           console.log(error.message)
         }
+
+        mailRef.current.value = '';
+        setTimeout(() => {
+          setShow(0);
+        }, 5000);
     }
 
     const form = useForm({
@@ -29,11 +38,12 @@ function Mail() {
     
     return (
         <Box sx={{ maxWidth: 300 }} mx="auto">
-          <form onSubmit={form.onSubmit((values) => handelMail(values.email))}>
+          <form onSubmit={handelMail}>
             <TextInput
               required
               label="Email"
               placeholder="your@email.com"
+              ref={mailRef}
               {...form.getInputProps('email')}
             />
             
@@ -41,6 +51,12 @@ function Mail() {
                 width : '200px'
               }}>Submit</Button>
           </form>
+
+          {show && <Affix position={{top : 50 , right : 50}}>
+                        <Alert icon={<FaCheck size={16} />} title="Successfully Sent " color="green">
+                          Magic Authorisation ink sent successfully . Please check your email. Check Spam if link not found.
+                        </Alert>
+                      </Affix> }
         </Box>
       );
 }
