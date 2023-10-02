@@ -41,7 +41,7 @@ function Main() {
             //     setUrl('')
             // }, 5000);
             console.log(process.env.BASE_URL)
-            const data = await fetch('https://fierce-sea-77894.herokuapp.com/api/url/shorten', {
+            const data = await fetch('backend-url-short-mwnz7ofv8-mayur-ud.vercel.app/api/url/shorten', {
                 method: 'POST',
                 headers: {
                   'Accept': 'application/json',
